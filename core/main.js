@@ -6,27 +6,45 @@
  */
 
 /**
- * Define parent namespace
+ * Define parent application namespace.
  * 
  */
+// top-level namespace being assigned an object literal
 var jsRPG = jsRPG || {};
 
-jsRPG.namespace = function (ns_string) {
-	var parts = ns_string.split('.'),
-			parent = jsRPG,
-			i;
+// a convenience function for parsing string namespaces and automatically generating nested namespaces
+function extend(ns, ns_string) {
+	"use strict";
 	
-	// strip redundant leading global
-	if (parts[0] === "jsRPG") {
+	var parts = ns_string.split('.'),
+			parent = ns,
+			pl, i;
+			
+	if (parts[0] == "jsRPG") {
 		parts = parts.slice(1);
 	}
 	
-	for (i = 0; i < parts.length; i += 1) {
-		// create a property if it doesn't exist
-		if (typeof parent[parts[i]] === "undefined") {
+	pl = parts.length;
+	
+	for (i = 0; i < pl; i++) {
+		//create a property if it doesnt exist
+		if (typeof parent[parts[i]] === 'undefined') {
 			parent[parts[i]] = {};
 		}
 		parent = parent[parts[i]];
 	}
+	
 	return parent;
-};
+}
+
+
+/**
+ * Define namespaced modules.
+ * 
+ * Usage:
+ * var mod = extend(jsRPG, 'jsRPG.modules.module2');
+ * 
+ */
+var Dice = extend(jsRPG, "jsRPG.Dice");
+var Encounter = extend(jsRPG, "jsRPG.Encounter");
+

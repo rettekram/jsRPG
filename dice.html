@@ -82,7 +82,7 @@
 									<script type="text/javascript">
 										document.getElementById("roll_dice").addEventListener("click", function(event) {
 											(function(event) {
-												var newDiceRoll = new jsRPG.Dice;
+												var newDiceRoll = new Dice;
 												newDiceRoll.rollDice(document.forms[0].rollNumber.value, document.forms[0].rollSides.value, document.forms[0].rollAdjust.value);
 											}).call(document.getElementById("roll_dice"), event);
 										});
@@ -105,7 +105,7 @@
 									<script type="text/javascript">
 										document.getElementById("parse_dice").addEventListener("click", function(event) {
 											(function(event) {
-												var newDiceParse = new jsRPG.Dice; 
+												var newDiceParse = new Dice; 
 												newDiceParse.parseDice(document.forms[1].parseID.value);
 											}).call(document.getElementById("parse_dice"), event);
 										});
@@ -140,7 +140,7 @@
 									<script type="text/javascript">
 										document.getElementById("check_result").addEventListener("click", function(event) {
 											(function(event) {
-												var newDiceResult = new jsRPG.Dice; 
+												var newDiceResult = new Dice; 
 												newDiceResult.checkResult(
 													newDiceResult.rollDice(1,20,document.forms[2].skillModifier.value), 
 													document.forms[2].targetDC.value
