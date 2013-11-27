@@ -5,35 +5,36 @@
  * 
  */
 
-/**
- * Define parent application namespace.
- * 
- */
-// top-level namespace being assigned an object literal
 var jsRPG = jsRPG || {};
 
-// a convenience function for parsing string namespaces and automatically generating nested namespaces
-function extend(ns, ns_string) {
+
+/**
+ * Parse namespace string and generate nested namespaces
+ * 
+ */
+function extend (namespace, namespaceString) {
 	"use strict";
 	
-	var parts = ns_string.split('.'),
-			parent = ns,
-			pl, i;
-			
-	if (parts[0] == "jsRPG") {
+	// declare variables
+	var parts = namespaceString.split("."),
+			parent = namespace,
+			i;
+	
+	// removes top-level namespace from string
+	if (parts[0] === "jsRPG") {
 		parts = parts.slice(1);
 	}
 	
-	pl = parts.length;
-	
-	for (i = 0; i < pl; i++) {
+	// iterates through remaining string elements and adds to array
+	for (i = 0; i < parts.length; i+=1) {
 		//create a property if it doesnt exist
-		if (typeof parent[parts[i]] === 'undefined') {
+		if (typeof parent[parts[i]] === "undefined") {
 			parent[parts[i]] = {};
 		}
 		parent = parent[parts[i]];
 	}
 	
+	// returns a value
 	return parent;
 }
 
@@ -47,4 +48,3 @@ function extend(ns, ns_string) {
  */
 var Dice = extend(jsRPG, "jsRPG.Dice");
 var Encounter = extend(jsRPG, "jsRPG.Encounter");
-
