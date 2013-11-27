@@ -46,5 +46,36 @@ function extend (namespace, namespaceString) {
  * var mod = extend(jsRPG, 'jsRPG.modules.module2');
  * 
  */
-var Dice = extend(jsRPG, "jsRPG.Dice");
-var Encounter = extend(jsRPG, "jsRPG.Encounter");
+// Core components
+var Character = extend(jsRPG, "jsRPG.Core.Character");
+var Dice = extend(jsRPG, "jsRPG.Core.Dice");
+var Encounter = extend(jsRPG, "jsRPG.Core.Encounter");
+
+// Game systems
+var d20 = extend(jsRPG, 'jsRPG.Game.d20');
+var Dnd3 = extend(jsRPG, 'jsRPG.Game.d20.Dnd3');
+var Dnd4 = extend(jsRPG, 'jsRPG.Game.d20.Dnd4');
+var DndNext = extend(jsRPG, 'jsRPG.Game.d20.DndNext');
+
+console.log(jsRPG);
+
+	
+/**
+ * Additional methods for Array()
+ * 
+ */
+// Adds the elements of an array
+Array.prototype.sum = function () {
+  for (var i = 0, sum = 0; i < this.length; sum += this[i++]);
+  return sum;
+};
+
+// Finds the maximum value in an array
+Array.prototype.max = function () {
+  return Math.max.apply({}, this);
+};
+
+// Finds the minimum value in an array
+Array.prototype.min = function () {
+  return Math.min.apply({}, this);
+};
