@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<title>jsRPG | UML Diagrams</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<!-- HTML5 Shim, for IE6-8 of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<style type="text/css">
+		ul.uml {padding-left:0;}
+		ul.uml li {list-style: none;}
+	</style>
+  <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+		    <a class="navbar-brand" href="index.html">jsRPG</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+   			<ul class="nav navbar-nav">
+					<li><a href="index.html">&#8592; Back to home</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>UML Diagrams</h1>
+				</div>
+				<p class="lead">This document is for maping out various jsRPG realted classes and use cases.</p>
+			</div>
+			
+			<!-- Actions -->
+			<div class="col-md-3">	
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Action.JS</h4></div>
+					<div class="panel-body">
+						<ul class="uml">
+							<li>- characterOptions</li>
+						</ul>
+						<hr />
+						<ul class="uml">
+							<li>+ attack</li>
+							<li>+ move</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Character -->
+			<div class="col-md-3">	
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Character.JS</h4></div>
+					<div class="panel-body">
+						<ul class="uml">
+							<li>- maxHP : int</li>
+							<li>- currentHP : int</li>
+							<li>- level : int</li>
+							<li>- class</li>
+						</ul>
+						<hr />
+						<ul class="uml">
+							<li>+ healHP</li>
+							<li>+ damageHP</li>
+							<li>+ levelUp</li>
+							<li>+ levelDrain</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Dice -->
+			<div class="col-md-3">	
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Dice.JS</h4></div>
+					<div class="panel-body">
+						<ul class="uml">
+							<li>- numberOfSides : int</li>
+							<li>- numberOfDice : int</li>
+							<li>- adjustValue : int</li>
+							<li>+ resultOfRoll : int</li>
+						</ul>
+						<hr />
+						<ul class="uml method">
+							<li>+ rollDice() : int</li>
+							<li>+ parseDice() : int</li>
+							<li>+ checkResult() : boolean</li>
+						</ul>
+					</div>
+					<div class="panel-footer"><a href="dice.html">Demo</a></div>
+				</div>
+			</div>
+			
+			<!-- Encounter -->
+			<div class="col-md-3">	
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Encounter.JS</h4></div>
+					<div class="panel-body">
+						<ul class="uml">
+							<li>- players : array</li>
+							<li>- npcs : array</li>
+						</ul>
+						<hr />
+						<ul class="uml">
+							<li>+ <u>Actions</u></li>
+							<li>+ <u>Effects</u></li>
+							<li>+ initiative</li>
+							<li>+ rounds</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>	
+	</div>
+
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/boostrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

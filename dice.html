@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<title>jsRPG | Dice Roller</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<!-- HTML5 Shim, for IE6-8 of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+  <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+		    <a class="navbar-brand" href="index.html">jsRPG</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+   			<ul class="nav navbar-nav">
+					<li><a href="index.html">&#8592; Back to home</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="page-header">
+					<h1>Dice Roller</h1>
+				</div>
+				<p class="lead">A object orienged JavaScript dice rolling program that allows for easy integration with any gaming platform.</p>
+				<p class="lead">All results of this demo output to the browser's console.</p>
+				<h4>References</h4>
+				<ul>
+					<li><a href="http://stackoverflow.com/questions/1031466/evaluate-dice-rolling-notation-strings/1031779#1031779" target="_blank">http://stackoverflow.com/questions/1031466/evaluate-dice-rolling-notation-strings/1031779#1031779</a></li>
+					<li><a href="http://www.underprise.com/2012/06/05/dicejs-a-javascript-dice-roller/" target="_blank">http://www.underprise.com/2012/06/05/dicejs-a-javascript-dice-roller/</a></li>
+				</ul>
+				
+			</div>
+			<div class="col-md-6">	
+				
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Dice.JS</h4></div>
+					<div class="panel-body">
+						
+						<form id="diceRoll" class="form-inline">
+							<label>rollDice</label>
+							<div class="row">
+								<div class="col-xs-3 col-sm-2 col-md-3 col-lg-2">
+									<div class="form-group">
+										<input class="form-control" id="rollNumber" type="text" placeholder="3" value="3">
+									</div>
+								</div>
+								<div class="col-xs-3 col-sm-2 col-md-3 col-lg-2">
+									<div class="form-group">
+										<select class="form-control" id="rollSides">
+											<option value="4">d4</option>
+											<option value="6" selected="selected">d6</option>
+											<option value="8">d8</option>
+											<option value="10">d10</option>
+											<option value="12">d12</option>
+											<option value="20">d20</option>
+											<option value="100">d100</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-xs-3 col-sm-2">
+									<div class="form-group">
+										<input class="form-control" id="rollAdjust" type="text" placeholder="+1" value="+1">	
+									</div>
+								</div>
+								<div class="col-xs-3 col-lg-1">
+									<button class="btn btn-primary" type="button" id="roll_dice">Roll</button>
+									<script type="text/javascript">
+										document.getElementById("roll_dice").addEventListener("click", function(event) {
+											(function(event) {
+												var newDiceRoll = new jsRPG.Dice;
+												newDiceRoll.rollDice(document.forms[0].rollNumber.value, document.forms[0].rollSides.value, document.forms[0].rollAdjust.value);
+											}).call(document.getElementById("roll_dice"), event);
+										});
+									</script>
+								</div>
+							</div>
+							<span class="help-block">Calculates the number of dice in the roll and adds any modifers.</span>
+						</form>
+			
+						<form id="diceParse" class="form-inline">
+							<label>parseDice</label>
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="form-group">
+										<input class="form-control" id="parseID" type="text" placeholder="3d6+1" value="3d6+1">
+									</div>
+								</div>
+								<div class="col-xs-3 col-lg-2">
+									<button class="btn btn-primary" type="button" id="parse_dice">Roll</button>
+									<script type="text/javascript">
+										document.getElementById("parse_dice").addEventListener("click", function(event) {
+											(function(event) {
+												var newDiceParse = new jsRPG.Dice; 
+												newDiceParse.parseDice(document.forms[1].parseID.value);
+											}).call(document.getElementById("parse_dice"), event);
+										});
+									</script>
+								</div>
+							</div>
+							<span class="help-block">Converts written dice format into regular expresion and parses result.</span>
+						</form>
+
+						<form id="diceAction" class="form-inline">
+							<label>checkResult</label>
+							<div class="row">
+	  						<div class="col-xs-4">
+								  <div class="input-group">
+								  	<span class="input-group-addon">d20</span>
+									  <input class="form-control" id="skillModifier" type="text" placeholder="+6" value="+6">
+									</div>
+								</div>
+								<div class="col-xs-1">
+									<p class="form-control-static">vs</p>
+								</div>
+								<div class="col-xs-4">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">DC</span>
+										  <input class="form-control" id="targetDC" type="text" placeholder="15" value="15">
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-1">
+								  <button class="btn btn-primary" type="button" id="check_result">Roll</button>
+									<script type="text/javascript">
+										document.getElementById("check_result").addEventListener("click", function(event) {
+											(function(event) {
+												var newDiceResult = new jsRPG.Dice; 
+												newDiceResult.checkResult(
+													newDiceResult.rollDice(1,20,document.forms[2].skillModifier.value), 
+													document.forms[2].targetDC.value
+												);
+											}).call(document.getElementById("check_result"), event);
+										});
+									</script>
+								</div>
+							</div>
+							<span class="help-block">Check the result of a modified die roll verses a target difficulty class.</span>
+						</form>
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/boostrap/js/bootstrap.min.js"></script>
+	<script src="core/main.js"></script>
+	<script src="core/array.js"></script>
+	<script src="core/dice.js"></script>
+</body>
+
+</html>
