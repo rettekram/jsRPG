@@ -33,10 +33,10 @@ Dice.prototype.rollDice = function (numberOfDice, numberOfSides, adjustValue) {
 			valueOfDice = [], 
 			outputOfDice = "", 
 			totalRoll = 0,
-			i;	
+			i;
 	
 	// validates as integer and sets default value (1)
-  this.numberOfDice = parseInt(numberOfDice, 10);
+	this.numberOfDice = parseInt(numberOfDice, 10);
 	if (isNaN(numberOfDice)) {
 		numberOfDice = 1;
 	}
@@ -51,35 +51,35 @@ Dice.prototype.rollDice = function (numberOfDice, numberOfSides, adjustValue) {
 		adjustValue = 0;
 	}
 
-  // loop over the numberOfDice generating a random number between one and the the numberOfSides
-  for (i = 0; i < numberOfDice; i+=1) {
-    // generate a random number between 1 and numberOfSides;
-    valueOfDice = Math.floor((Math.random() * numberOfSides) + 1);
-    // store it in the array;
-    resultOfDice[i] = valueOfDice;
-  }
-  
-  // includes adjustValue to the end of the resultOfDice array
-  resultOfDice.push(this.adjustValue);
-  
-  // adds all elements of resultOfDice together
-  this.totalRoll = resultOfDice.sum();
-  
-  // debug to the screen
-  if (this.debug) {
-    // loop over the results
-    for (i = 0; i < resultOfDice.length; i+=1) {
-      // add results the outputOfDice string
-      outputOfDice += resultOfDice[i] + " ";
-    }
-    // log the results
-    console.log("-----------");
-    console.log(outputOfDice, typeof outputOfDice);
-    console.log(this.totalRoll, typeof this.totalRoll);
-  }
-  
-  // returns the value of the calculated dice roll
-  return this.totalRoll;
+	// loop over the numberOfDice generating a random number between one and the the numberOfSides
+	for (i = 0; i < numberOfDice; i+=1) {
+		// generate a random number between 1 and numberOfSides;
+		valueOfDice = Math.floor((Math.random() * numberOfSides) + 1);
+		// store it in the array;
+		resultOfDice[i] = valueOfDice;
+	}
+	
+	// includes adjustValue to the end of the resultOfDice array
+	resultOfDice.push(this.adjustValue);
+	
+	// adds all elements of resultOfDice together
+	this.totalRoll = resultOfDice.sum();
+	
+	// debug to the screen
+	if (this.debug) {
+		// loop over the results
+		for (i = 0; i < resultOfDice.length; i+=1) {
+			// add results the outputOfDice string
+			outputOfDice += resultOfDice[i] + " ";
+		}
+		// log the results
+		console.log("-----------");
+		console.log(outputOfDice, typeof outputOfDice);
+		console.log(this.totalRoll, typeof this.totalRoll);
+	}
+	
+	// returns the value of the calculated dice roll
+	return this.totalRoll;
 };
 
 
@@ -96,7 +96,7 @@ Dice.prototype.parseDice = function (diceRegEx) {
 	
 	// removes the first item in the array which is the regular expression
 	diceArray.splice(0, 1);
-
+	
 	// sends parameters to rollDice() method
 	return this.rollDice.apply(this, diceArray);
 };
@@ -140,5 +140,6 @@ Dice.prototype.checkResult = function (resultOfRoll, targetRoll) {
 	// return the results of the check
 	return isSuccess;
 };
+
 
 }(jsRPG));
