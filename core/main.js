@@ -52,10 +52,11 @@ var Dice = new Extend(jsRPG, "jsRPG.Core.Dice");
 var Encounter = new Extend(jsRPG, "jsRPG.Core.Encounter");
 
 // Game systems
-var d20 = new Extend(jsRPG, 'jsRPG.Game.d20');
-var Dnd3 = new Extend(jsRPG, 'jsRPG.Game.d20.Dnd3');
-var Dnd4 = new Extend(jsRPG, 'jsRPG.Game.d20.Dnd4');
-var DndNext = new Extend(jsRPG, 'jsRPG.Game.d20.DndNext');
+var d20 = new Extend(jsRPG, 'jsRPG.System.d20');
+var Dnd3 = new Extend(jsRPG, 'jsRPG.System.d20.Dnd3');
+var Dnd4 = new Extend(jsRPG, 'jsRPG.System.d20.Dnd4');
+var DndNext = new Extend(jsRPG, 'jsRPG.System.d20.DndNext');
+var GURPS = new Extend(jsRPG, 'jsRPG.System.GURPS');
 
 console.log(jsRPG);
 
