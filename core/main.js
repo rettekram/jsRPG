@@ -12,7 +12,7 @@ var jsRPG = jsRPG || {};
  * Parse namespace string and generate nested namespaces
  * 
  */
-function extend (namespace, namespaceString) {
+Extend = function (namespace, namespaceString) {
 	"use strict";
 	
 	// declare variables
@@ -36,26 +36,26 @@ function extend (namespace, namespaceString) {
 	
 	// returns a value
 	return parent;
-}
+};
 
 
 /**
  * Define namespaced modules.
  * 
  * Usage:
- * var mod = extend(jsRPG, 'jsRPG.modules.module2');
+ * var Module2 = new Extend(jsRPG, 'jsRPG.Modules.Module2');
  * 
  */
 // Core components
-var Character = extend(jsRPG, "jsRPG.Core.Character");
-var Dice = extend(jsRPG, "jsRPG.Core.Dice");
-var Encounter = extend(jsRPG, "jsRPG.Core.Encounter");
+var Character = new Extend(jsRPG, "jsRPG.Core.Character");
+var Dice = new Extend(jsRPG, "jsRPG.Core.Dice");
+var Encounter = new Extend(jsRPG, "jsRPG.Core.Encounter");
 
 // Game systems
-var d20 = extend(jsRPG, 'jsRPG.Game.d20');
-var Dnd3 = extend(jsRPG, 'jsRPG.Game.d20.Dnd3');
-var Dnd4 = extend(jsRPG, 'jsRPG.Game.d20.Dnd4');
-var DndNext = extend(jsRPG, 'jsRPG.Game.d20.DndNext');
+var d20 = new Extend(jsRPG, 'jsRPG.Game.d20');
+var Dnd3 = new Extend(jsRPG, 'jsRPG.Game.d20.Dnd3');
+var Dnd4 = new Extend(jsRPG, 'jsRPG.Game.d20.Dnd4');
+var DndNext = new Extend(jsRPG, 'jsRPG.Game.d20.DndNext');
 
 console.log(jsRPG);
 
