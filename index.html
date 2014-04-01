@@ -25,6 +25,7 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 		    <ul class="nav navbar-nav">
 		    	<li><a href="dice.html">Dice Roller</a></li>
+		    	<li><a href="character.html">Character</a></li>
 		    	<li><a href="uml.html">UML Diagrams</a></li>
 		    </ul>
 		  </div>
@@ -56,14 +57,43 @@
 				</ul>
 				
 			</div>
-			<div class="col-md-6">	
+			<div class="col-md-6">
+				
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Actors</h4></div>
+					<div class="panel-body">
+						<ul>
+							<li>Game</li>
+							<li>Player</li>
+						</ul>
+					</div>
+				</div>
 				
 				<div class="panel panel-default">
 					<div class="panel-heading"><h4 class="panel-title">Use Cases</h4></div>
 					<div class="panel-body">
 						<h5>Character.JS</h5>
 						<ol>
-							<li>The player creates a character for the game.</li>
+							<li>The player creates a new character for the game.
+								<ol>
+									<li>The player rolls dice to generate the character's attribute points.</li>
+									<li>The player assigns attribute points to available attributes.</li>
+									<li>The player chooses a Class for the character.</li>
+									<li>The player chooses a Race for the character.</li>
+									<li>The player chooses X Skills for the character.</li>
+									<li>The game sets default Hit Point value to character.</li>
+									<li>The game sets character Level to 1.</li>
+								</ol>
+							</li>
+							<li>The player views an exiting character.</li>
+							<li>The player edits an existing character.</li>
+						</ol>
+						<h5>Action.JS</h5>
+						<ol>
+							<li>Attack</li>
+							<li>Move</li>
+							<li>Cast Spell</li>
+							<li>Use Item</li>
 						</ol>
 						<h5>Encounter.JS</h5>
 						<ol>

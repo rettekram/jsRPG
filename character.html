@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<title>jsRPG | Character Creation</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<!-- HTML5 Shim, for IE6-8 of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+  <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="lib/qunit/qunit.css" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+		    <a class="navbar-brand" href="index.html">jsRPG</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+   			<ul class="nav navbar-nav">
+					<li><a href="index.html">&#8592; Back to home</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="page-header">
+					<h1>Character</h1>
+				</div>
+				<p class="lead">Creates a new instance of a Character object for use in game encounters.</p>
+				<p class="lead">All results of this demo output to the browser's console.</p>
+				<h4>References</h4>
+				<ul>
+					<li><a href="https://www.youtube.com/watch?v=xVnW7ZMqBus" target="_blank">https://www.youtube.com/watch?v=xVnW7ZMqBus</a></li>
+				</ul>
+				
+			</div>
+			<div class="col-md-6">	
+				
+				<div class="panel panel-default">
+					<div class="panel-heading"><h4 class="panel-title">Character.JS</h4></div>
+					<div class="panel-body">
+						
+						<h5>Use Case</h5>
+						<ul>
+							<li>The player creates a new character for the game.
+								<ul>
+									<li>The player rolls dice to generate the character's attribute points.</li>
+									<li>The player assigns attribute points to available attributes.</li>
+									<li>The player chooses a Class for the character.</li>
+									<li>The player chooses a Race for the character.</li>
+									<li>The player chooses X Skills for the character.</li>
+									<li>The game sets default Hit Point value to character.</li>
+									<li>The game sets character Level to 1.</li>
+								</ul>
+							</li>
+							<li>The player views an exiting character.</li>
+							<li>The player edits an existing character.</li>
+						</ul>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="qunit"></div>
+  			<div id="qunit-fixture"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/boostrap/js/bootstrap.min.js"></script>
+	<script src="lib/qunit/qunit.js"></script>
+  <script src="test/character.tests.js"></script>
+	<script src="core/main.js"></script>
+	<script src="core/dice.js"></script>
+	<script src="core/character.js"></script>
+</body>
+
+</html>
