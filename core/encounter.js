@@ -13,9 +13,10 @@
  */
 Encounter = function() {
 	// sets default parameters
-	this.players = 1;
-	this.npcs = 1;
-	
+	this.player = [];
+	this.character = [];
+	this.monsters = [];
+
 	// debug to the screen
 	this.debug = true;
 };
