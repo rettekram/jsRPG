@@ -70,12 +70,12 @@ Dice.prototype.rollDice = function (numberOfDice, numberOfSides, adjustValue) {
 		// loop over the results
 		for (i = 0; i < resultOfDice.length; i+=1) {
 			// add results the outputOfDice string
-			outputOfDice += resultOfDice[i] + " ";
+			outputOfDice += resultOfDice[i] + " + ";
 		}
+		// remove extra + sign from string
+		outputOfDice = outputOfDice.slice(0, -2);
 		// log the results
-		console.log("-----------");
-		console.log(outputOfDice, typeof outputOfDice);
-		console.log(this.totalRoll, typeof this.totalRoll);
+		document.getElementById("debug").value = outputOfDice + "= " + this.totalRoll;
 	}
 	
 	// returns the value of the calculated dice roll
@@ -134,7 +134,7 @@ Dice.prototype.checkResult = function (resultOfRoll, targetRoll) {
 	// debug to the screen
 	if (this.debug) {
 		// log the results
-		console.log ("Player rolls a", resultOfRoll, "against a DC", targetRoll, "and the check", resultText);
+		document.getElementById("debug").value = "Player rolls a " + resultOfRoll + " against a DC " + targetRoll + " and the check " + resultText;
 	}
 	
 	// return the results of the check
