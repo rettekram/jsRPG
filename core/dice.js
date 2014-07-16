@@ -16,7 +16,7 @@ Dice = function() {
 	this.numberOfDice = 0;
 	this.numberOfSides = 0;
 	this.adjustValue = 0;
-	this.resultOfRoll = 0;
+	this.totalRoll = 0;
 	
 	// debug to the screen
 	this.debug = true;
@@ -106,15 +106,15 @@ Dice.prototype.parseDice = function (diceRegEx) {
  * Check the dice results verses a target difficulty class.
  * 
  */
-Dice.prototype.checkResult = function (resultOfRoll, targetRoll) {
+Dice.prototype.checkResult = function (totalRoll, targetRoll) {
 	// delcare variables
 	var isSuccess, 
 			resultText = "";
 
 	// validates as integer and sets default value (1)
-	resultOfRoll = parseInt(resultOfRoll, 10);
-	if (isNaN(resultOfRoll)) {
-		resultOfRoll = 1;
+	totalRoll = parseInt(totalRoll, 10);
+	if (isNaN(totalRoll)) {
+		totalRoll = 1;
 	}
 	// validates as integer and sets default value (10)
 	targetRoll = parseInt(targetRoll, 10);
@@ -123,7 +123,7 @@ Dice.prototype.checkResult = function (resultOfRoll, targetRoll) {
 	}
 	
 	// calculates dice roll against target difficulty
-	if (resultOfRoll >= targetRoll) {
+	if (totalRoll >= targetRoll) {
 		isSuccess = true;
 		resultText = "succeeds!";
 	} else {
@@ -134,7 +134,7 @@ Dice.prototype.checkResult = function (resultOfRoll, targetRoll) {
 	// debug to the screen
 	if (this.debug) {
 		// log the results
-		document.getElementById("debug").value = "Player rolls a " + resultOfRoll + " against a DC " + targetRoll + " and the check " + resultText;
+		document.getElementById("debug").value = "Player rolls a " + totalRoll + " against a DC " + targetRoll + " and the check " + resultText;
 	}
 	
 	// return the results of the check
