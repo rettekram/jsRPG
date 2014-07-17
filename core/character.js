@@ -16,6 +16,7 @@ Character = function() {
 	this.hp = 0;
 	this.maxHP = 0;
 	this.level = 0;
+	this.levelUpHP = 0;
 
 	// debug to the screen
 	this.debug = true;
@@ -85,9 +86,12 @@ Character.prototype.rollMaxHP = function (diceRoll) {
 			arrayHP = [this.maxHP, addHP],
 			newMaxHP;
 
+	// store value of added hit points
+	this.levelUpHP = addHP;
+	
 	// adds array values together
 	newMaxHP = arrayHP.sum();
-
+	
 	// new value becomes the maxHP 
 	this.setMaxHP(newMaxHP);
 
@@ -136,8 +140,15 @@ var Bob = new Character();
 if (Bob.debug == 1) {
 	Bob.setMaxHP(12);
 	console.log("Bob's maximum HP is", Bob.getMaxHP());
+	console.log("----");
 	console.log("Bob gains a level!");
 	Bob.rollMaxHP("1d10+2");
+	console.log("Bob gains rolls a", Bob.levelUpHP);
+	console.log("Bob's new maximum HP is", Bob.getMaxHP());
+	console.log("----");
+	console.log("Bob gains a level!");
+	Bob.rollMaxHP("1d10+2");
+	console.log("Bob gains rolls a", Bob.levelUpHP);
 	console.log("Bob's new maximum HP is", Bob.getMaxHP());
 }
 
