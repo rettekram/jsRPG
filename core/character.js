@@ -13,10 +13,11 @@
  */
 Character = function() {
 	// sets default parameters
-	this.hp = 0;
-	this.maxHP = 0;
-	this.level = 0;
-	this.levelUpHP = 0;
+	this.maxHP = 4;
+	this.currentHP = this.maxHP;
+	this.hitDice = "1d4";
+	this.characterLevel = 1;
+	this.gainedHP = [this.maxHP];
 
 	// debug to the screen
 	this.debug = true;
@@ -29,10 +30,10 @@ Character = function() {
  */
 Character.prototype.getHP = function () {
 	// validates as integer
-	this.hp = parseInt(this.hp, 10);
+	this.currentHP = parseInt(this.currentHP, 10);
 	
 	// returns the value
-	return this.hp;
+	return this.currentHP;
 };
 
 Character.prototype.setHP = function (newHP) {
@@ -42,10 +43,10 @@ Character.prototype.setHP = function (newHP) {
 	}
 	
 	// update value
-	this.hp = newHP;
+	this.currentHP = newHP;
 	
 	// returns the value
-	return this.hp;
+	return this.currentHP;
 };
 
 
@@ -81,19 +82,14 @@ Character.prototype.setMaxHP = function (newMaxHP) {
  */
 Character.prototype.rollMaxHP = function (diceRoll) {
 	// save new dice roll to a variable
-	var rollHP = new Dice,
-			addHP = rollHP.parseDice(diceRoll),
-			arrayHP = [this.maxHP, addHP],
-			newMaxHP;
+	var rollHP = new Dice(),
+			addHP = rollHP.parseDice(diceRoll);
+	
+	// store dice roll value to array
+	this.gainedHP.push(addHP);
 
-	// store value of added hit points
-	this.levelUpHP = addHP;
-	
 	// adds array values together
-	newMaxHP = arrayHP.sum();
-	
-	// new value becomes the maxHP 
-	this.setMaxHP(newMaxHP);
+	this.maxHP = this.gainedHP.sum();
 
 	// return the value
 	return this.maxHP;
@@ -106,10 +102,10 @@ Character.prototype.rollMaxHP = function (diceRoll) {
  */
 Character.prototype.getLevel = function () {
 	// validates as integer
-	this.level = parseInt(this.level, 10);
+	this.characterLevel = parseInt(this.characterLevel, 10);
 	
 	// returns the value
-	return this.level;
+	return this.characterLevel;
 };
 
 Character.prototype.setLevel = function (newLevel) {
@@ -119,15 +115,27 @@ Character.prototype.setLevel = function (newLevel) {
 	}
 	
 	// update  value
-	this.level = newLevel;
+	this.characterLevel = newLevel;
 	
 	// returns the value
-	return this.level;
+	return this.characterLevel;
 };
 
 
-
-
+/**
+ * Increments the Character Level by 1 or more
+ * 
+ */
+Character.prototype.levelUp = function (i) {
+	// iterate through levels gained
+	
+		// roll additional hit dice
+		
+		// increase level by 1
+	
+	// returns values
+	return this.characterLevel;
+};
 
 
 
@@ -138,18 +146,13 @@ Character.prototype.setLevel = function (newLevel) {
  */
 var Bob = new Character();
 if (Bob.debug == 1) {
-	Bob.setMaxHP(12);
-	console.log("Bob's maximum HP is", Bob.getMaxHP());
+	console.log(Bob);
+	console.log("Bob's starting HP is", Bob.getMaxHP());
 	console.log("----");
 	console.log("Bob gains a level!");
-	Bob.rollMaxHP("1d10+2");
-	console.log("Bob gains rolls a", Bob.levelUpHP);
-	console.log("Bob's new maximum HP is", Bob.getMaxHP());
-	console.log("----");
-	console.log("Bob gains a level!");
-	Bob.rollMaxHP("1d10+2");
-	console.log("Bob gains rolls a", Bob.levelUpHP);
-	console.log("Bob's new maximum HP is", Bob.getMaxHP());
+	Bob.rollMaxHP(Bob.hitDice);
+	console.log("Bob rolls", Bob.hitDice, "for his additional hp and gets a", Bob.gainedHP.last());
+	console.log("Bob's new maximum HP is now", Bob.getMaxHP());
 }
 
 
