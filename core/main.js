@@ -73,3 +73,8 @@ Array.prototype.max = function () {
 Array.prototype.min = function () {
   return Math.min.apply({}, this);
 };
+
+// Finds the last value in an array
+Array.prototype.last = function(){
+	return this[this.length - 1];
+};
