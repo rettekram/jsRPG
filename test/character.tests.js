@@ -47,7 +47,7 @@ test("All methods provide the correct type of value", function() {
 
 
 /**
- * Hit Point tests
+ * Level tests
  * 
  */
 module("Level");
